@@ -1,0 +1,109 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script>
+        const current_user = "{{ user.username }}"
+    </script>
+{% endblock %}
+
+
+{% block body %}
+    <div id="pills-tabContent">
+        <div id="pills-posts">
+            <div id="home-header" class="fs-1 fw-bold pb-2 mb-4 border-bottom">
+                Home
+            </div>
+            <div id="home-posts"></div>
+        </div>
+        <div id="pills-following">
+            <div id="following-header" class="fs-1 fw-bold pb-2 mb-4 border-bottom">
+                Following
+            </div>
+            <div id="following-posts"></div>
+        </div>
+        <div id="pills-profile">
+            <div id="profile-header">
+                <div id="profile-title" class="fs-1 fw-bold pb-2 mb-4 border-bottom"></div>
+                <div class="row mb-3">
+                    <div id="profile-followage" class="col d-flex align-items-center text-muted"></div>
+                    <div id="profile-follow" class="col d-flex justify-content-end">
+                    </div>
+                </div>
+                <div id="profile-posts"></div>
+            </div>
+            <div id="profile-posts"></div>
+        </div>
+        <div id="pills-login">
+            <div class="card shadow-sm">
+                <form class="px-4 py-3" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="login_username" name="username" placeholder="Username">
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="login_password" name="password"
+                               placeholder="Password">
+                    </div>
+                    <div class="mb-3">
+                        {% if message %}
+                            <small class="text-danger">{{ message }}</small>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+
+                <div class="mx-3 px-2 pb-3">
+                    <hr>
+                    Don't have an account? <a class="" href="{% url 'register' %}">Register here.</a>
+                </div>
+            </div>
+
+        </div>
+        <div id="pills-register">
+            <div class="card shadow-sm">
+                <form class="px-4 py-3" action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <h2>Register</h2>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="register_username" name="username" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="register_email" name="email"
+                               placeholder="email@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="register_password" name="password"
+                               placeholder="Password">
+                    </div>
+                    <div>
+                        <label for="confirmation" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="register_confirmation" name="confirmation"
+                               placeholder="Confirm Password">
+                    </div>
+                    <div class="mb-3">
+                        {% if message %}
+                            <small class="text-danger">{{ message }}</small>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+
+                <div class="mx-3 px-2 pb-3">
+                    <hr>
+                    Already have an account? <a class="" href="{% url 'login' %}">Log In here.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
