@@ -37,7 +37,11 @@ class Follow(models.Model):
 
     def clean(self):
         if self.follower == self.following:
-            raise ValidationError("A user cannot follow themselves.")
+            raise ValidationError("Follower and following cannot be the same user.")
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
 
     class Meta:
         unique_together = ["follower", "following"]

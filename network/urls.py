@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path
 
 from . import views
 
@@ -24,8 +24,5 @@ urlpatterns = [
     path("api/like/<int:post_id>", views.like, name="api_like"),
     path("api/unlike/<int:post_id>", views.unlike, name="api_unlike"),
     path("api/unfollow/<str:username>", views.unfollow, name="api_unfollow"),
-
-    # Catch-All
-    #path('<path:resource>', views.index_resource, name="index_resource")
 
 ]
