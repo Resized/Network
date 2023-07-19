@@ -21,32 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // menuLinks.forEach(function (link) {
-  //   link.addEventListener("click", function (event) {
-  //     event.preventDefault(); // Prevent the default link behavior
-  //
-  //     // Get the target content ID from the data attribute
-  //     const targetContentId = this.dataset.target;
-  //
-  //     // Hide all content divs
-  //     contentDivs.forEach(function (div) {
-  //       div.classList.remove("active-page");
-  //     });
-  //
-  //     // Show the content div corresponding to the clicked menu item
-  //     const targetContentDiv = document.getElementById(targetContentId);
-  //     if (targetContentDiv) {
-  //       targetContentDiv.classList.add("active-page");
-  //     }
-  //
-  //     // Remove the "active" class from all menu links
-  //     removeActiveClass();
-  //
-  //     // Add the "active" class to the clicked menu item
-  //     this.classList.add("active");
-  //   });
-  // });
-
   // Define your routes and corresponding handlers
   const routes = [
     { path: "/", handler: defaultHandler },

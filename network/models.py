@@ -52,7 +52,7 @@ class Post(models.Model):
     body = models.CharField(max_length=140)
     user = models.ForeignKey("User", on_delete=models.CASCADE, related_name="posts")
     timestamp = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField("User", related_name="likes", blank=True, null=True)
+    likes = models.ManyToManyField("User", related_name="likes", blank=True)
 
     def __str__(self):
         return f"{self.user} wrote: {self.body}"
@@ -62,7 +62,7 @@ class Post(models.Model):
             "id": self.id,
             "body": self.body,
             "user": self.user.username,
-            "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M %p"),
+            "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M:%S %p"),
             "likes": [user.username for user in self.likes.all()]
         }
 
@@ -83,3 +83,9 @@ class Post(models.Model):
             posts = paginator.page(total_pages)
         serialized_posts = [post.serialize() for post in posts]
         return serialized_posts, total_pages, posts.has_next(), posts.has_previous()
+
+    @classmethod
+    def get_liked_posts(cls, user):
+        # Retrieve posts liked by the given user
+        liked_posts = cls.objects.filter(likes=user).order_by("-timestamp")
+        return liked_posts
