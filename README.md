@@ -1,9 +1,8 @@
 # Social Network
 
-[![Build Status](https://travis-ci.org/resized/network.svg?branch=master)](https://travis-ci.org/resized/network)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
 Social Network Single-Page-Application
+
+![Animation](https://github.com/Resized/Network/assets/4931622/0324c9e9-0b11-4d20-8299-028ea773f705)
 
 ## Table of Contents
 
